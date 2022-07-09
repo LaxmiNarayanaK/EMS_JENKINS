@@ -20,7 +20,7 @@ public interface EmployeeService  {
 
     boolean empExists(int empId);
 
-//    List<Employee> getEmployeeRole(int empId);
+    String getEmployeeRole(int empId);
 
 
 }

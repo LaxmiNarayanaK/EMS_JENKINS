@@ -17,17 +17,26 @@ public class TimesheetController {
 
     @GetMapping("/timesheet")
     public List<Timesheet> listAllTimesheet() {
-//        System.out.println("******************"+timesheetService.listTimesheet().toString());
         return timesheetService.listTimesheet();
-//        return
     }
 
     @PostMapping("/timesheet")
     public Timesheet create(@RequestBody Timesheet timesheet) {
-//        if(!isValid(employee))
-//            throw new ValidationException("Fill out the form with Valid Data");
-//        else
-            timesheetService.addTimesheet(timesheet);
+
+        timesheetService.addTimesheet(timesheet);
         return timesheet;
+    }
+
+    @PutMapping("/timesheet")
+    Timesheet updateTimesheet(@RequestBody Timesheet timesheet)
+    {
+        timesheetService.updateTimesheet(timesheet);
+        return timesheet;
+    }
+
+    @DeleteMapping("/timesheet/{timesheedid}")
+    public void deleteTimesheet(@PathVariable int timesheedid)
+    {
+            timesheetService.deleteTimesheet(timesheedid);
     }
 }

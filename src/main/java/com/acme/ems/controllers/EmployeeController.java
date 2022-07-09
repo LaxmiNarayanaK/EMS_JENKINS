@@ -69,4 +69,10 @@ public class EmployeeController {
         return employee.getEmpName() != null && employee.getEmpContact()!=0 && employee.getEmpEmail() != null && employee.getEmpRole() !=null;
     }
 
+    @GetMapping("/employeerole")
+    String getEmpName( @RequestParam(value = "empid") int empId)
+    {
+        return employeeService.getEmployeeRole(empId);
+    }
+
 }

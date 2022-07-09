@@ -1,23 +1,23 @@
-//package com.acme.ems.models;
-//
-//import lombok.Data;
-//
-//import javax.persistence.Entity;
-//
+package com.acme.ems.models;
+
+import lombok.Data;
+
+import javax.persistence.Entity;
+
 //@Entity(name = "salary")
 //@Data
-//public class Salary {
-//
-//    int salId;
-//
-//    int empId;
-//
-//    String salMonth;
-//
-//    String salDate;
-//
-//    double salAmount;
-//
-//
-//
-//}
+public class Salary {
+
+    int salId;
+
+    int empId;
+
+    String salMonth;
+
+    String salDate;
+
+    double salAmount;
+
+
+
+}

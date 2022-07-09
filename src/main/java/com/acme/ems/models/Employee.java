@@ -36,12 +36,12 @@ public class Employee {
 
 
 
-    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL,mappedBy = "employee")
-    private Login login;
-
-
-    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<Timesheet> timesheet = new ArrayList<>();
+//    @OneToOne(fetch = FetchType.LAZY,cascade=CascadeType.ALL,mappedBy = "employee")
+//    private Login login;
+//
+//
+//    @OneToMany(fetch = FetchType.LAZY,mappedBy = "employee",cascade = CascadeType.ALL,orphanRemoval = true)
+//    private List<Timesheet> timesheet = new ArrayList<>();
 
     public Employee(String empName, long empContact, String empDepartment, String empEmail, String empAddress, String empRole) {
         this.empName = empName;

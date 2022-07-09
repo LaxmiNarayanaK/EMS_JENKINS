@@ -56,10 +56,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employeeRepository.existsById(empId);
     }
 
+    @Override
+    public String getEmployeeRole(int empId) {
+        Optional<Employee> employee =  employeeRepository.findById(empId);
+        return employee.get().getEmpRole();
+    }
 
-//    @Override
-//    public List<Employee> getRole(int empId){
-//        return employeeRepository.findByEmpRole(empId);
-//    }
 
 }
