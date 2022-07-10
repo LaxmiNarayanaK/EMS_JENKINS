@@ -2,7 +2,10 @@ package com.acme.ems.services.implementations;
 
 import com.acme.ems.models.Employee;
 import com.acme.ems.repositories.EmployeeRepository;
+import com.acme.ems.repositories.LoginRepository;
+import com.acme.ems.repositories.TimesheetRepository;
 import com.acme.ems.services.EmployeeService;
+import com.acme.ems.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +17,10 @@ import java.util.Optional;
 public class EmployeeServiceImpl implements EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
-
+    @Autowired
+    TimesheetServiceImpl timesheetService;
+    @Autowired
+    LoginServiceImpl loginService;
     @Override
     public List<Employee> listEmployees() {
 
@@ -28,20 +34,22 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-        employeeRepository.save(employee);
+    public Employee addEmployee(Employee employee) {
+        return  employeeRepository.save(employee);
 
     }
 
     @Override
-    public void deleteEmployee(int employeeId) {
-        employeeRepository.deleteById(employeeId);
+    public void deleteEmployee(int empID) {
+        timesheetService.deleteEmployeeTimesheets(empID);
+        loginService.deleteLogin(empID);
+        employeeRepository.deleteById(empID);
 
     }
     @Override
-    public void updateEmployee(Employee employee) {
+    public Employee updateEmployee(Employee employee) {
 
-        employeeRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     @Override
@@ -51,14 +59,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public boolean empExists(int empId) {
+    public boolean empExists(int empID) {
 
-        return employeeRepository.existsById(empId);
+        return employeeRepository.existsById(empID);
     }
 
     @Override
-    public String getEmployeeRole(int empId) {
-        Optional<Employee> employee =  employeeRepository.findById(empId);
+    public String getEmployeeRole(int empID) {
+        Optional<Employee> employee =  employeeRepository.findById(empID);
         return employee.get().getEmpRole();
     }
 

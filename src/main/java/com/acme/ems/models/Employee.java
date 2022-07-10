@@ -16,22 +16,22 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int empID;
 
-    @Column(name = "empname")
+    @Column(name = "empName")
     private String empName;
 
-    @Column(name = "empcontact")
+    @Column(name = "empContact")
     private long empContact;
 
-    @Column(name = "empdepartment")
+    @Column(name = "empDepartment")
     private String empDepartment;
 
-    @Column(name = "empemail")
+    @Column(name = "empEmail")
     private String empEmail;
 
-    @Column(name = "empaddress")
+    @Column(name = "empAddress")
     private String empAddress;
 
-    @Column(name = "emprole")
+    @Column(name = "empRole")
     private String empRole;
 
 

@@ -11,6 +11,5 @@ public interface EmployeeRepository extends CrudRepository<Employee,Integer> {
 
     List<Employee> findByEmpName(String empName);
 
-//     public List<Employee> findByEmpRole(int empId);
 
 }

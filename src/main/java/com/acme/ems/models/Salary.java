@@ -10,7 +10,7 @@ public class Salary {
 
     int salId;
 
-    int empId;
+    int empID;
 
     String salMonth;
 

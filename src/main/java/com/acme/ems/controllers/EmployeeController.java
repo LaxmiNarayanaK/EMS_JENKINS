@@ -23,17 +23,16 @@ public class EmployeeController {
     public Employee create( @RequestBody Employee employee) {
         if(!isValid(employee))
         throw new ValidationException("Fill out the form with Valid Data");
-        else employeeService.addEmployee(employee);
-        return employee;
+        else return employeeService.addEmployee(employee);
     }
 
-    @GetMapping("/employee/{id}")
-    Employee getEmployeee(@PathVariable int empId)
+    @GetMapping("/employee/{empID}")
+    Employee getEmployeee(@PathVariable int empID)
     {
-        if(employeeService.empExists(empId))
-            return employeeService.getEmployee(empId);
+        if(employeeService.empExists(empID))
+            return employeeService.getEmployee(empID);
         else
-            throw new ValidationException("Employee do not exists with ID :"+empId);
+            throw new ValidationException("Employee do not exists with ID :"+empID);
     }
 
     @PutMapping("/employee")
@@ -42,20 +41,21 @@ public class EmployeeController {
         if(!isValid(employee))
             throw new ValidationException("Fill out the form with Valid Data");
         else if(employeeService.empExists(employee.getEmpID()))
-            employeeService.updateEmployee(employee);
+            return employeeService.updateEmployee(employee);
         else
             throw new ValidationException("Employee do not exists with ID :"+employee.getEmpID());
 
-        return employee;
     }
 
-    @DeleteMapping("/employee/{id}")
-    public void delete(@PathVariable int empId)
+    @DeleteMapping("/employee/{empID}")
+    public String delete(@PathVariable int empID)
     {
-        if(employeeService.empExists(empId))
-            employeeService.deleteEmployee(empId);
+        if(employeeService.empExists(empID)) {
+            employeeService.deleteEmployee(empID);
+            return "Employee Deleted with EmpID : " + empID;
+        }
         else
-            throw new ValidationException("Employee do not exists with ID :"+empId);
+            throw new ValidationException("Employee do not exists with ID :"+empID);
     }
 
 
@@ -70,9 +70,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/employeerole")
-    String getEmpName( @RequestParam(value = "empid") int empId)
+    String getEmpName( @RequestParam(value = "empID") int empID)
     {
-        return employeeService.getEmployeeRole(empId);
+        return employeeService.getEmployeeRole(empID);
     }
 
 }

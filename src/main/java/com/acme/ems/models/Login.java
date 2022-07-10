@@ -1,19 +1,23 @@
 package com.acme.ems.models;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "login")
 @Data
+@NoArgsConstructor
+//@AllArgsConstructor
+
 public class Login {
 
-
+//    @Id
+//    @Column(name = "empID")
+//    private int empID;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "empid")
-    private int empid;
-
     @Column(name = "loginid")
     private String loginID;
 
@@ -26,9 +30,16 @@ public class Login {
     @Column(name = "loginstatus")
     String loginStatus;
 
-    @OneToOne()
-    @PrimaryKeyJoinColumn
+    @OneToOne
+    @JoinColumn(name = "empID")
     private Employee employee;
 
+    public Login(String loginID, String loginUsername, String loginPassword, String loginStatus,Employee employee) {
+        this.loginID = loginID;
+        this.loginUsername = loginUsername;
+        this.loginPassword = loginPassword;
+        this.loginStatus = loginStatus;
+        this.employee = employee;
+    }
 
 }

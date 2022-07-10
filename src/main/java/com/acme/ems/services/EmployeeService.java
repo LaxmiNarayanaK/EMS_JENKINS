@@ -10,17 +10,17 @@ public interface EmployeeService  {
 
     Employee getEmployee(int id);
 
-    void addEmployee(Employee employee);
+    Employee addEmployee(Employee employee);
 
-    void deleteEmployee(int id);
+    void deleteEmployee(int empID);
 
-    void updateEmployee(Employee employee);
+    Employee updateEmployee(Employee employee);
 
     List<Employee> searchEmployee(String empName);
 
-    boolean empExists(int empId);
+    boolean empExists(int empID);
 
-    String getEmployeeRole(int empId);
+    String getEmployeeRole(int empID);
 
 
 }

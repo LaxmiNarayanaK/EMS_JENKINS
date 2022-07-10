@@ -11,11 +11,13 @@ public interface TimesheetService  {
 
     Timesheet getTimesheet(int timesheetId);
 
-    void addTimesheet(Timesheet timesheet);
+    Timesheet addTimesheet(Timesheet timesheet);
 
     void deleteTimesheet(int timesheetId);
 
-    void updateTimesheet(Timesheet timesheet);
+    Timesheet updateTimesheet(Timesheet timesheet);
+
+    void deleteEmployeeTimesheets(int empID);
 
 
 }
